@@ -194,7 +194,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 py-12 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
-              <Card className="border-2 hover:border-samba-blue transition-colors">
+              <Card className="border-2 h-[300px] hover:border-samba-blue transition-colors">
                 <CardHeader>
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-samba-blue text-white mb-4">
                     <Zap className="h-6 w-6" />
@@ -208,7 +208,7 @@ export default function HomePage() {
                   </CardDescription>
                 </CardContent>
               </Card>
-              <Card className="border-2 hover:border-samba-orange transition-colors">
+              <Card className="border-2 h-[300px] hover:border-samba-orange transition-colors">
                 <CardHeader>
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-samba-orange text-white mb-4">
                     <Target className="h-6 w-6" />
@@ -221,7 +221,7 @@ export default function HomePage() {
                   </CardDescription>
                 </CardContent>
               </Card>
-              <Card className="border-2 hover:border-samba-blue transition-colors">
+              <Card className="border-2 h-[300px] hover:border-samba-blue transition-colors">
                 <CardHeader>
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-samba-blue text-white mb-4">
                     <Code className="h-6 w-6" />
