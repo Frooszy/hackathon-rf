@@ -24,7 +24,7 @@ export default function HomePage() {
           <Link href="#demo" className="text-sm font-medium hover:text-samba-blue transition-colors">
             Demonstração
           </Link>
-          <Link href="/blog" className="text-sm font-medium hover:text-samba-blue transition-colors">
+          <Link href="/projects" className="text-sm font-medium hover:text-samba-blue transition-colors">
             Projetos
           </Link>
         </nav>
