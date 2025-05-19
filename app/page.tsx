@@ -1,9 +1,11 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Recycle, Lightbulb, Users, Play, Code, Zap, Target } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { motion } from "motion/react"
 
 export default function HomePage() {
   return (
@@ -12,7 +14,7 @@ export default function HomePage() {
         <Link href="/" className="flex items-center justify-center">
           <span className="text-2xl font-bold text-samba-blue">Samba Code</span>
         </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
+        <nav className="ml-auto hidden gap-4 sm:gap-6 md:flex">
           <Link href="#about" className="text-sm font-medium hover:text-samba-blue transition-colors">
             Sobre
           </Link>
@@ -33,22 +35,54 @@ export default function HomePage() {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4 text-white">
                 <div className="space-y-2">
-                  <Badge className="bg-samba-orange text-white hover:bg-orange-600">Inovação em Ação</Badge>
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Samba Code</h1>
-                  <h2 className="text-xl sm:text-2xl font-semibold text-blue-100">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.8 }}
+                  >
+                    <Badge className="bg-samba-orange text-white hover:bg-orange-600">Inovação em Ação</Badge>
+                  </motion.div>
+
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.1 }}
+                    className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                  >
+                    Samba Code
+                  </motion.h1>
+
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.3 }}
+                    className="text-xl sm:text-2xl font-semibold text-blue-100"
+                  >
                     Transformando Cigarros Eletrônicos Apreendidos em Inovação
-                  </h2>
-                  <p className="max-w-[600px] text-blue-100 md:text-xl">
-                    Descubra como estamos dando novo significado aos cigarros eletrônicos apreendidos pela Receita
-                    Federal, transformando-os em ferramentas poderosas para educação, inovação e tecnologia sustentável.
-                  </p>
+                  </motion.h2>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.5 }}
+                    className="max-w-[600px] text-blue-100 md:text-xl"
+                  >
+                    Descubra como estamos dando novo significado aos cigarros eletrônicos apreendidos pela Receita Federal, transformando-os em ferramentas poderosas para educação, inovação e tecnologia sustentável.
+                  </motion.p>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.6 }}
+                  className="flex flex-col gap-2 md:flex-row"
+                >
                   <Button size="lg" className="bg-samba-orange hover:bg-orange-600 text-white" asChild>
                     <Link href="#demo">
                       Assistir Demonstração <Play className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
+
                   <Button
                     variant="secondary"
                     size="lg"
@@ -59,18 +93,26 @@ export default function HomePage() {
                       Explorar Projetos <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                </div>
+                </motion.div>
               </div>
+
               <div className="flex items-center justify-center">
                 <div className="relative">
                   <div className="absolute inset-0 bg-samba-orange rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                  <Image
-                    src="/placeholder.svg?height=400&width=400"
-                    width={400}
-                    height={400}
-                    alt="Inovação Samba Code"
-                    className="relative rounded-2xl shadow-2xl"
-                  />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.8 }}
+                    className="relative"
+                  >
+                    <Image
+                      src="/placeholder.svg?height=400&width=400"
+                      width={400}
+                      height={400}
+                      alt="Inovação Samba Code"
+                      className="rounded-2xl shadow-2xl"
+                    />
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -101,7 +143,7 @@ export default function HomePage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="grid gap-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-samba-blue text-white">
+                    <div className="flex p-2 items-center justify-center rounded-lg bg-samba-blue text-white">
                       <Recycle className="h-6 w-6" />
                     </div>
                     <div>
@@ -112,7 +154,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-samba-orange text-white">
+                    <div className="flex p-2 items-center justify-center rounded-lg bg-samba-orange text-white">
                       <Lightbulb className="h-6 w-6" />
                     </div>
                     <div>
@@ -123,7 +165,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-samba-blue text-white">
+                    <div className="flex p-2 items-center justify-center rounded-lg bg-samba-blue text-white">
                       <Users className="h-6 w-6" />
                     </div>
                     <div>
