@@ -149,8 +149,6 @@ export default function BlogPage() {
             </div>
           </div>
         </section>
-
-        {/* Featured Projects */}
         <section className="w-full py-12 md:py-16">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
@@ -164,7 +162,6 @@ export default function BlogPage() {
                 </Button>
               </Link>
             </div>
-
             <div className="grid gap-6 mt-8 md:grid-cols-2">
               {featuredProjects.map((project) => (
                 <motion.div
@@ -228,12 +225,9 @@ export default function BlogPage() {
             </div>
           </div>
         </section>
-
-        {/* All Projects */}
         <section id="all-projects" className="w-full py-12 md:py-16 bg-gray-50">
           <div className="container px-4 md:px-6">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8">Explore Todos os Projetos</h2>
-
             <Tabs defaultValue="Todos" className="w-full">
               <TabsList className="mb-8 flex flex-wrap gap-2 bg-transparent">
                 {categories.map((category) => (
@@ -246,7 +240,6 @@ export default function BlogPage() {
                   </TabsTrigger>
                 ))}
               </TabsList>
-
               {categories.map((category) => (
                 <TabsContent key={category} value={category} className="w-full">
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -315,8 +308,6 @@ export default function BlogPage() {
             </Tabs>
           </div>
         </section>
-
-        {/* Submit Project CTA */}
         <section className="w-full py-12 md:py-16 bg-gradient-to-r from-samba-blue to-blue-700">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -328,18 +319,43 @@ export default function BlogPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-samba-orange hover:bg-orange-600 text-white">
-                  Enviar Projeto
+                <Button
+                  size="lg"
+                  className="bg-samba-orange hover:bg-orange-600 text-white group relative overflow-hidden"
+                  asChild
+                >
+                  <Link href="#" className="inline-flex items-center gap-2 relative">
+                    <span className="mx-3 transition-all duration-300 ease-in-out group-hover:-translate-x-2">
+                      Enviar Projeto
+                    </span>
+                    <ArrowRight
+                      size={16}
+                      className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+                      style={{ transformOrigin: 'center' }}
+                    />
+                  </Link>
                 </Button>
-                <Button variant="secondary" size="lg" className="bg-white text-samba-blue hover:bg-blue-50">
-                  Saiba Mais
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="bg-white text-samba-blue hover:bg-blue-50 group relative overflow-hidden"
+                  asChild
+                >
+                  <Link href="#" className="inline-flex items-center gap-2 relative">
+                    <span className="mx-3 transition-all duration-300 ease-in-out group-hover:-translate-x-2">
+                      Saiba Mais
+                    </span>
+                    <ArrowRight
+                      size={16}
+                      className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+                      style={{ transformOrigin: 'center' }}
+                    />
+                  </Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Popular Tags */}
         <section className="w-full py-12 md:py-16">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center mb-8">
