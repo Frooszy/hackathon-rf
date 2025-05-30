@@ -412,7 +412,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                   <div className="bg-gray-100 p-4">
                     <h3 className="font-bold">Projetos Relacionados</h3>
                   </div>
-                  <div className="p-4 space-y-4">
+                  <div className="p-4 flex flex-col gap-3">
                     {project.relatedProjects.map((related) => (
                       <Link href={`/blog/${related.id}`} key={related.id}>
                         <div className="flex gap-3 group">
@@ -442,7 +442,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
         </section>
         <section className="w-full py-8 bg-gray-50">
           <div className="container px-4 md:px-6">
-            <Link href="/blog">
+            <Link href="/projects">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
                 Voltar para Projetos

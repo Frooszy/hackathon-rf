@@ -174,7 +174,7 @@ export default function BlogPage() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="group"
                 >
-                  <Link href={`/blog/${project.id}`}>
+                  <Link href={`/projects/${project.id}`}>
                     <Card className="overflow-hidden border-2 hover:border-samba-blue transition-all duration-300 h-full">
                       <div className="relative">
                         <Badge className="absolute top-4 left-4 z-10 bg-samba-orange text-white">
@@ -260,7 +260,7 @@ export default function BlogPage() {
                           transition={{ duration: 0.5, ease: "easeOut" }}
                           className="group"
                         >
-                          <Link href={`/blog/${project.id}`}>
+                          <Link href={`/projects/${project.id}`}>
                             <Card className="overflow-hidden border hover:border-samba-blue transition-all duration-300 h-full">
                               <div className="relative">
                                 <Badge className="absolute top-3 left-3 z-10 bg-samba-orange text-white">
