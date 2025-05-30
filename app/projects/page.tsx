@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search, Filter, ArrowRight, ThumbsUp, MessageSquare, Clock, Tag } from "lucide-react"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -103,28 +105,8 @@ export default function BlogPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-gray-200">
-        <Link href="/" className="flex items-center justify-center">
-          <span className="text-2xl font-bold text-samba-blue">Samba Code</span>
-        </Link>
-        <nav className="ml-auto hidden gap-4 sm:gap-6 md:flex">
-          <Link href="/#about" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Sobre
-          </Link>
-          <Link href="/#features" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Recursos
-          </Link>
-          <Link href="/#demo" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Demonstração
-          </Link>
-          <Link href="/blog" className="text-sm font-medium text-samba-blue">
-            Projetos
-          </Link>
-        </nav>
-      </header>
-
+      <Header />
       <main className="flex-1">
-        {/* Hero Section */}
         <section className="w-full py-12 md:py-16 bg-gradient-to-br from-samba-blue to-blue-700">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -136,7 +118,7 @@ export default function BlogPage() {
               >
                 <Badge className="bg-samba-orange text-white hover:bg-orange-600">Projetos Inovadores</Badge>
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
-                  Galeria de Projetos Samba Code
+                  Galeria de Projetos
                 </h1>
                 <p className="max-w-[800px] text-blue-100 md:text-xl/relaxed">
                   Explore projetos inovadores que transformam cigarros eletrônicos apreendidos em ferramentas
@@ -401,21 +383,7 @@ export default function BlogPage() {
           </div>
         </section>
       </main>
-
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Samba Code. Todos os direitos reservados.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Termos de Serviço
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Política de Privacidade
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Contato
-          </Link>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   )
 }

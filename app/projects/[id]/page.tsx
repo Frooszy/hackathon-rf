@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -10,13 +9,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowLeft, ThumbsUp, MessageSquare, Share2, Bookmark, Clock, ChevronRight, Download } from "lucide-react"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 
 export default function ProjectPage({ params }: { params: { id: string } }) {
   const [saved, setSaved] = useState(false)
   const [liked, setLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(124)
 
-  // This would normally come from a database
   const project = {
     id: params.id,
     title: "Microcontrolador com Bateria de Cigarro Eletrônico",
@@ -118,28 +118,8 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-gray-200">
-        <Link href="/" className="flex items-center justify-center">
-          <span className="text-2xl font-bold text-samba-blue">Samba Code</span>
-        </Link>
-        <nav className="ml-auto hidden gap-4 sm:gap-6 md:flex">
-          <Link href="/#about" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Sobre
-          </Link>
-          <Link href="/#features" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Recursos
-          </Link>
-          <Link href="/#demo" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Demonstração
-          </Link>
-          <Link href="/blog" className="text-sm font-medium text-samba-blue">
-            Projetos
-          </Link>
-        </nav>
-      </header>
-
+      <Header />
       <main className="flex-1">
-        {/* Breadcrumb */}
         <div className="container px-4 md:px-6 py-4">
           <div className="flex items-center text-sm text-gray-500">
             <Link href="/" className="hover:text-samba-blue">
@@ -153,8 +133,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
             <span className="text-gray-700 font-medium truncate">{project.title}</span>
           </div>
         </div>
-
-        {/* Project Header */}
         <section className="w-full py-8 md:py-12 bg-gradient-to-br from-samba-blue to-blue-700">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -201,14 +179,10 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
             </div>
           </div>
         </section>
-
-        {/* Project Content */}
         <section className="w-full py-8 md:py-12">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-3">
-              {/* Main Content */}
               <div className="lg:col-span-2 space-y-8">
-                {/* Cover Image */}
                 <div className="rounded-xl overflow-hidden border">
                   <Image
                     src={project.image || "/placeholder.svg"}
@@ -218,8 +192,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                     className="w-full object-cover"
                   />
                 </div>
-
-                {/* Action Bar */}
                 <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center gap-4">
                     <Button
@@ -250,8 +222,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                     <span>{saved ? "Salvo" : "Salvar"}</span>
                   </Button>
                 </div>
-
-                {/* Project Tabs */}
                 <Tabs defaultValue="instructions" className="w-full">
                   <TabsList className="grid w-full grid-cols-3 bg-gray-100">
                     <TabsTrigger
@@ -279,16 +249,13 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                       <div dangerouslySetInnerHTML={{ __html: project.content }} />
                     </div>
                   </TabsContent>
-
                   <TabsContent value="comments" className="mt-6">
                     <div className="space-y-6">
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-bold">Comentários ({project.comments})</h3>
                         <Button className="bg-samba-blue hover:bg-blue-700 text-white">Adicionar Comentário</Button>
                       </div>
-
                       <div className="space-y-6">
-                        {/* Sample comments */}
                         {[1, 2, 3].map((i) => (
                           <div key={i} className="flex gap-4 p-4 bg-gray-50 rounded-lg">
                             <Avatar>
@@ -329,7 +296,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                       </div>
                     </div>
                   </TabsContent>
-
                   <TabsContent value="gallery" className="mt-6">
                     <div className="grid grid-cols-2 gap-4">
                       {project.gallery.map((image, index) => (
@@ -346,8 +312,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                     </div>
                   </TabsContent>
                 </Tabs>
-
-                {/* Tags */}
                 <div className="pt-4">
                   <h3 className="text-lg font-bold mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
@@ -362,8 +326,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                     ))}
                   </div>
                 </div>
-
-                {/* Author Bio */}
                 <div className="p-6 bg-gray-50 rounded-xl">
                   <div className="flex items-start gap-4">
                     <Avatar className="h-12 w-12">
@@ -384,10 +346,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                   </div>
                 </div>
               </div>
-
-              {/* Sidebar */}
               <div className="space-y-8">
-                {/* Project Info Card */}
                 <div className="border rounded-xl overflow-hidden">
                   <div className="bg-samba-blue text-white p-4">
                     <h3 className="font-bold">Informações do Projeto</h3>
@@ -406,16 +365,12 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                       <div className="text-gray-500">Downloads:</div>
                       <div className="font-medium">{project.downloads}</div>
                     </div>
-
                     <Separator />
-
                     <Button className="w-full bg-samba-orange hover:bg-orange-600 text-white">
                       <Download className="h-4 w-4 mr-2" /> Baixar Instruções
                     </Button>
                   </div>
                 </div>
-
-                {/* Materials Needed */}
                 <div className="border rounded-xl overflow-hidden">
                   <div className="bg-gray-100 p-4">
                     <h3 className="font-bold">Materiais Necessários</h3>
@@ -453,8 +408,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                     </ul>
                   </div>
                 </div>
-
-                {/* Related Projects */}
                 <div className="border rounded-xl overflow-hidden">
                   <div className="bg-gray-100 p-4">
                     <h3 className="font-bold">Projetos Relacionados</h3>
@@ -487,8 +440,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
             </div>
           </div>
         </section>
-
-        {/* Back to Projects */}
         <section className="w-full py-8 bg-gray-50">
           <div className="container px-4 md:px-6">
             <Link href="/blog">
@@ -500,21 +451,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           </div>
         </section>
       </main>
-
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Samba Code. Todos os direitos reservados.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Termos de Serviço
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Política de Privacidade
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Contato
-          </Link>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   )
 }

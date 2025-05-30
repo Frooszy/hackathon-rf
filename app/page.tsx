@@ -6,29 +6,13 @@ import { ArrowRight, Recycle, Lightbulb, Users, Play, Code, Zap, Target } from "
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "motion/react"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-gray-200">
-        <Link href="/" className="flex items-center justify-center">
-          <span className="text-2xl font-bold text-samba-blue">Samba Code</span>
-        </Link>
-        <nav className="ml-auto hidden gap-4 sm:gap-6 md:flex">
-          <Link href="#about" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Sobre
-          </Link>
-          <Link href="#features" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Recursos
-          </Link>
-          <Link href="#demo" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Demonstração
-          </Link>
-          <Link href="/projects" className="text-sm font-medium hover:text-samba-blue transition-colors">
-            Projetos
-          </Link>
-        </nav>
-      </header>
+      <Header />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-samba-blue to-blue-700">
           <div className="container px-4 md:px-6">
@@ -70,32 +54,47 @@ export default function HomePage() {
                     Descubra como estamos dando novo significado aos cigarros eletrônicos apreendidos pela Receita Federal, transformando-os em ferramentas poderosas para educação, inovação e tecnologia sustentável.
                   </motion.p>
                 </div>
-
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.6 }}
                   className="flex flex-col gap-2 md:flex-row"
                 >
-                  <Button size="lg" className="bg-samba-orange hover:bg-orange-600 text-white" asChild>
-                    <Link href="#demo">
-                      Assistir Demonstração <Play className="ml-2 h-4 w-4" />
+                  <Button
+                    size="lg"
+                    className="bg-samba-orange hover:bg-orange-600 text-white group relative overflow-hidden"
+                    asChild
+                  >
+                    <Link href="#demo" className="inline-flex items-center gap-2 relative">
+                      <span className="mx-3 transition-all duration-300 ease-in-out group-hover:-translate-x-2">
+                        Assistir Demonstração
+                      </span>
+                      <Play
+                        size={16}
+                        className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+                        style={{ transformOrigin: 'center' }}
+                      />
                     </Link>
                   </Button>
-
                   <Button
                     variant="secondary"
                     size="lg"
-                    className="text-white text-samba-blue"
+                    className="text-samba-blue group relative overflow-hidden"
                     asChild
                   >
-                    <Link href="/blog">
-                      Explorar Projetos <ArrowRight className="ml-2 h-4 w-4" />
+                    <Link href="/blog" className="inline-flex items-center gap-2 relative">
+                      <span className="mx-3 transition-all duration-300 ease-in-out group-hover:-translate-x-2">
+                        Explorar Projetos
+                      </span>
+                      <ArrowRight
+                        size={16}
+                        className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+                        style={{ transformOrigin: 'center' }}
+                      />
                     </Link>
                   </Button>
                 </motion.div>
               </div>
-
               <div className="flex items-center justify-center">
                 <div className="relative">
                   <div className="absolute inset-0 bg-samba-orange rounded-full blur-3xl opacity-20 animate-pulse"></div>
@@ -270,45 +269,52 @@ export default function HomePage() {
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-samba-blue to-blue-700">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center text-white">
-              <div className="space-y-2">
+              <div className="flex flex-col justify-center items-center">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Junte-se ao Movimento Inovador</h2>
                 <p className="max-w-[600px] text-blue-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Explore nossa galeria de projetos, compartilhe suas inovações e faça parte da revolução tecnológica
-                  sustentável.
+                  Explore nossa galeria de projetos, compartilhe suas inovações e faça parte da revolução tecnológica sustentável.
                 </p>
               </div>
-              <div className="space-x-4">
-                <Button size="lg" className="bg-samba-orange hover:bg-orange-600 text-white" asChild>
-                  <Link href="/blog">
-                    Explorar Projetos <ArrowRight className="ml-2 h-4 w-4" />
+              <div className="flex gap-4 flex-col justify-center items-center md:flex-row">
+                <Button
+                  size="lg"
+                  className="bg-samba-orange hover:bg-orange-600 text-white group relative overflow-hidden"
+                  asChild
+                >
+                  <Link href="/projects" className="inline-flex items-center gap-2 relative">
+                    <span className="mx-3 transition-all duration-300 ease-in-out group-hover:-translate-x-2">
+                      Explorar Projetos
+                    </span>
+                    <ArrowRight
+                      size={16}
+                      className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+                      style={{ transformOrigin: 'center' }}
+                    />
                   </Link>
                 </Button>
                 <Button
                   variant="secondary"
                   size="lg"
-                  className="border-white text-white text-samba-blue"
+                  className="border-white text-samba-blue group relative overflow-hidden"
+                  asChild
                 >
-                  Envie seu projeto
+                  <Link href="#" className="inline-flex items-center gap-2 relative">
+                    <span className="mx-3 transition-all duration-300 ease-in-out group-hover:-translate-x-2">
+                      Envie seu projeto
+                    </span>
+                    <ArrowRight
+                      size={16}
+                      className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+                      style={{ transformOrigin: 'center' }}
+                    />
+                  </Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Samba Code. Todos os direitos reservados.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Termos de Serviço
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Política de Privacidade
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
-            Contato
-          </Link>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   )
 }
