@@ -2,14 +2,18 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Recycle, Lightbulb, Users, Play, Code, Zap, Target } from "lucide-react"
+import { ArrowRight, Recycle, Lightbulb, Users, Play, Code, Zap, Target, LoaderCircle } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "motion/react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import ModelViewer from "@/components/model-viwer"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [animationFinished, setAnimationFinished] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
@@ -23,19 +27,18 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.8 }}
+                    onAnimationComplete={() => setAnimationFinished(true)}
                   >
                     <Badge className="bg-samba-orange text-white hover:bg-orange-600">Inovação em Ação</Badge>
                   </motion.div>
-
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.1 }}
-                    className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                    className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl"
                   >
                     Samba Code
                   </motion.h1>
-
                   <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -44,7 +47,6 @@ export default function HomePage() {
                   >
                     Transformando Cigarros Eletrônicos Apreendidos em Inovação
                   </motion.h2>
-
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -97,18 +99,16 @@ export default function HomePage() {
               </div>
               <div className="flex items-center justify-center">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-samba-orange rounded-full blur-3xl opacity-20 animate-pulse"></div>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1.2], delay: 0.8 }}
                     className="relative"
                   >
-                    <Image
-                      src="/placeholder.svg?height=400&width=400"
-                      width={400}
-                      height={400}
-                      alt="Inovação Samba Code"
+                    <img
+                      src="/robot.gif"
+                      width={225}
+                      alt="GIF de Transformação"
                       className="rounded-2xl shadow-2xl"
                     />
                   </motion.div>
@@ -132,13 +132,22 @@ export default function HomePage() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-              <Image
-                src="/placeholder.svg?height=400&width=600"
-                width={600}
-                height={400}
-                alt="Processo de Inovação"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-              />
+              <div className="flex items-center justify-center px-4 sm:px-6 md:px-8 py-4 w-full overflow-hidden">
+                <div className="relative w-full max-w-md">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 bg-black/15 rounded-xl overflow-hidden">
+                    {
+                      animationFinished
+                        ?
+                        <ModelViewer />
+                        :
+                        <div className="w-full h-full flex flex-col justify-center items-center gap-4">
+                          <LoaderCircle className="animate-spin" size={48} />
+                          <p>Carregando modelo...</p>
+                        </div>
+                    }
+                  </div>
+                </div>
+              </div>
               <div className="flex flex-col justify-center space-y-4">
                 <div className="grid gap-6">
                   <div className="flex items-start gap-4">
